@@ -1,3 +1,4 @@
 try_pandas.py
 tes.py
 *.xlsx
+!template.html
