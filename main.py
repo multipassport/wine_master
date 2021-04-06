@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
 
+
 def get_template():
     env = Environment(
         loader=FileSystemLoader('.'),
@@ -25,10 +26,9 @@ if __name__ == '__main__':
     excel_file = 'wine3.xlsx'
     excel_data_df = pandas.read_excel(excel_file, keep_default_na=False)
     table_headers = excel_data_df.columns.ravel()
-    categories = excel_data_df[table_headers[0]].unique().tolist()
+    categories = excel_data_df[table_headers[0]].sort_values().unique().tolist()
     wines = excel_data_df.T.to_dict('dict')
     wine_stock = collections.defaultdict(list)
-
 
     for category in categories:
         for wine_index, wine_data in wines.items():
@@ -40,10 +40,9 @@ if __name__ == '__main__':
         wine_stock=wine_stock,
         categories=table_headers,
     )
-    
+
     with open('index.html', 'w', encoding='utf-8') as file:
         file.write(rendered_page)
-
 
     server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
     server.serve_forever()
