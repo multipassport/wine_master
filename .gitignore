@@ -2,5 +2,4 @@ env/
 .vscode/
 try_pandas.py
 test.py
-*.xlsx
 !template.html
