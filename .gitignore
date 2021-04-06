@@ -1,4 +1,6 @@
+env/
+.vscode/
 try_pandas.py
-tes.py
+test.py
 *.xlsx
 !template.html
