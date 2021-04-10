@@ -1,9 +1,13 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-from datetime import date
 import collections
-from dateutil.relativedelta import relativedelta
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
+
+from datetime import date
+from dateutil.relativedelta import relativedelta
+from http.server import HTTPServer
+from http.server import SimpleHTTPRequestHandler
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
+from jinja2 import select_autoescape
 
 
 def get_template():
