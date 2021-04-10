@@ -4,9 +4,8 @@ main/
 try_pandas.py
 test.py
 date_time.py
-*.xlsx
-!template.html
 index.html
 repl.it
 __pycache__/
 pandas_files/
+.replit

@@ -2,7 +2,6 @@ import collections
 import pandas
 
 from datetime import date
-from dateutil.relativedelta import relativedelta
 from http.server import HTTPServer
 from http.server import SimpleHTTPRequestHandler
 from jinja2 import Environment
@@ -21,9 +20,8 @@ def get_template():
 
 def get_winery_age():
     foundation_date = date(year=1920, month=1, day=1)
-    current_date = date.today()
-    time_delta = relativedelta(current_date, foundation_date)
-    return time_delta
+    today = date.today()
+    return today.year - foundation_date.year
 
 
 if __name__ == '__main__':
@@ -40,7 +38,7 @@ if __name__ == '__main__':
                 wine_stock[category].append(wine_data)
 
     rendered_page = get_template().render(
-        winery_age=get_winery_age().years,
+        winery_age=get_winery_age(),
         wine_stock=wine_stock,
         categories=table_headers,
     )
