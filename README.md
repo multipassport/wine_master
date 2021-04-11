@@ -6,8 +6,8 @@
 
 - Скачайте код
 - Заполните таблицу Excel в формате, указанном в образце example.xlsx
-- При первом использовании скрипта введите код `python -m pip install -r requirements.txt` в консоль
-- Запустите сайт командой `python3 main.py example.xlsx`, где вместо example.xlsx введите имя таблицы Excel
+- При первом использовании скрипта введите код в консоль ```python -m pip install -r requirements.txt``` 
+- Запустите сайт командой ```python3 main.py example.xlsx```, где вместо example.xlsx введите имя таблицы Excel
 - Перейдите на сайт по адресу [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Цели проекта
