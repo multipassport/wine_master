@@ -35,26 +35,26 @@ def create_parser():
     return parser
 
 
-def get_wine_stock():
+def get_wine_stock(wine_data):
     wine_stock = collections.defaultdict(list)
-    for category, content in excel_dataframe.set_index(
-            excel_dataframe.columns[0], drop=False
-          ).groupby(level=0):
-        wine_stock[category].extend(content.loc[[category]].to_dict('records'))
+    for wine in wine_records_from_excel:
+        wine_stock[wine['Категория']].append(wine)
     return wine_stock
 
 if __name__ == '__main__':
     parser = create_parser()
     arguments = parser.parse_args()
 
-    excel_dataframe = pandas.read_excel(arguments.file_name, keep_default_na=False)
-    table_headers = excel_dataframe.columns.ravel()
+    wine_records_from_excel = pandas.read_excel(arguments.file_name,
+        keep_default_na=False).to_dict('records')
+    table_headers = pandas.read_excel(arguments.file_name,
+        keep_default_na=False).columns.ravel()
     categories_names = ['category', 'name', 'sort', 'price', 'image', 'discount']
     categories = dict(zip(categories_names, table_headers))
 
     rendered_page = get_template().render(
         winery_age=get_winery_age(),
-        wine_stock=get_wine_stock(),
+        wine_stock=get_wine_stock(wine_records_from_excel),
         categories=categories,
         )
 
