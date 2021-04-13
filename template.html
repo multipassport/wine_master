@@ -116,7 +116,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12 section-title text-center mb-5">
-            {% for beverage, wines in wine_stock.items() %}
+            {% for beverage, wines in wine_stock | dictsort(true) %}
               <h2 class="d-block">{{beverage}}</h2>
               <div class="row">
               {% for wine in wines %}
