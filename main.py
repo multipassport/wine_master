@@ -47,15 +47,10 @@ if __name__ == '__main__':
 
     wine_records_from_excel = pandas.read_excel(arguments.file_name,
         keep_default_na=False).to_dict('records')
-    table_headers = pandas.read_excel(arguments.file_name,
-        keep_default_na=False).columns.ravel()
-    categories_names = ['category', 'name', 'sort', 'price', 'image', 'discount']
-    categories = dict(zip(categories_names, table_headers))
-
+    
     rendered_page = get_template().render(
         winery_age=get_winery_age(),
         wine_stock=get_wine_stock(wine_records_from_excel),
-        categories=categories,
         )
 
     with open('index.html', 'w', encoding='utf-8') as file:
