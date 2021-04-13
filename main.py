@@ -21,9 +21,9 @@ def get_template():
 
 
 def get_winery_age():
-    foundation_date = date(year=1920, month=1, day=1)
+    foundation_year = 1920
     today = date.today()
-    return today.year - foundation_date.year
+    return today.year - foundation_year
 
 
 def create_parser():
